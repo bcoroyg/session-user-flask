@@ -5,7 +5,7 @@ load_dotenv()
 
 
 class Config:
-    pass
+    SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 class DevelopmentConfig(Config):
