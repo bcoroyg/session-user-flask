@@ -13,21 +13,35 @@
         {{ bootstrap.load_css() }} 
       {% endblock %}
 
+      {% block customCSS %}
+      {% endblock customCSS %}
+
       <title>SESIÓN DE USUARIO | {% block title %}{% endblock title %}</title>
 
     {% endblock head %}
   </head>
   <body>
-    <main class="container">
-        {% block content %} 
-
-        {% endblock content %}
-    </main>
-
+    {%with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fixed-top text-center" role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {%endwith%}
+    
+    {% block body %} 
+    {% endblock body %}
 
     {% block scripts %}
       <!-- Optional JavaScript -->
       {{ bootstrap.load_js() }} 
     {% endblock scripts%}
+
+    {% block customJS %}
+    {% endblock customJS %}
   </body>
 </html>
