@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% block head %}
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      {% block styles %}
+      <!-- Bootstrap CSS -->
+        {{ bootstrap.load_css() }} 
+      {% endblock %}
+
+      <title>SESIÓN DE USUARIO | {% block title %}{% endblock title %}</title>
+
+    {% endblock head %}
+  </head>
+  <body>
+    <main class="container">
+        {% block content %} 
+
+        {% endblock content %}
+    </main>
+
+
+    {% block scripts %}
+      <!-- Optional JavaScript -->
+      {{ bootstrap.load_js() }} 
+    {% endblock scripts%}
+  </body>
+</html>
